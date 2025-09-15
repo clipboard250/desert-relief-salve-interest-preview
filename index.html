@@ -3,35 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Preview – Desert Relief Salve</title>
+  <title>Preview — Desert Relief Salve</title>
   <meta name="description" content="Preview of Desert Relief Salve — hemp-derived CBD topical handmade in Nevada. Reserve your jar when we go live." />
   <link rel="canonical" href="https://clipboard250.github.io/desert-relief-salve/preview.html"/>
 
-  <!-- Lexend font -->
+  <!-- Lexend -->
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300..700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --blush:#F7E6E9;
-      --dune:#EAD9C5;
-      --sage:#CFE1D4;
-      --ink:#2A2A2A;
-      --coral:#FF6B6B;
-      --forest:#2F3E33;
-      --tile:#FFF7F8;
-      --card:#FFFFFF;
-      --shadow:0 10px 30px rgba(0,0,0,.08);
-      --radius:16px;
+      --blush:#F7E6E9; --dune:#EAD9C5; --sage:#CFE1D4;
+      --ink:#2A2A2A; --muted:#4b5563;
+      --coral:#FF6B6B; --forest:#2F3E33;
+      --tile:#FFF7F8; --card:#FFFFFF;
+      --shadow:0 10px 30px rgba(0,0,0,.08); --radius:16px;
       --base:18px; --lh:1.7;
     }
+    *{box-sizing:border-box}
     body{
       margin:0; font-family:"Lexend",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       font-size:var(--base); line-height:var(--lh); color:var(--ink);
       background:linear-gradient(180deg,var(--blush),var(--dune) 45%,var(--sage));
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+      letter-spacing:.1px;
     }
     h1,h2,h3,h4{margin:0 0 10px; font-weight:600}
     p{margin:0 0 12px}
-    main{max-width:1000px; margin:auto; padding:28px 16px 60px}
 
     header{
       background:url('header_bg.jpg') center/cover no-repeat;
@@ -41,32 +38,48 @@
     header h1{font-size:clamp(28px,6vw,48px)}
     header p{font-size:clamp(16px,2.5vw,20px); opacity:.95}
 
+    main{max-width:1000px; margin:auto; padding:28px 16px 60px}
     .section{margin:32px 0}
+
+    /* Icon tiles */
     .tiles{display:grid; gap:14px; grid-template-columns:repeat(2,1fr)}
     @media(min-width:720px){.tiles{grid-template-columns:repeat(4,1fr)}}
     .tile{
       background:var(--tile); border:1px solid rgba(0,0,0,.06);
-      border-radius:12px; padding:14px; box-shadow:var(--shadow);
-      display:grid; gap:8px; align-content:start; min-height:120px;
+      border-radius:12px; padding:16px; box-shadow:var(--shadow);
+      display:grid; gap:10px; align-content:start; min-height:130px;
     }
-    .tile h4{margin:0; font-size:18px; font-weight:600}
+    .tile svg{width:28px;height:28px;color:var(--muted)}
+    .tile h4{margin:0; font-size:18px}
 
     .card{
       background:var(--card); border:1px solid rgba(0,0,0,.06);
       border-radius:var(--radius); padding:22px; box-shadow:var(--shadow);
     }
 
-    form input, form select, form textarea{
-      width:100%; padding:13px; margin-top:10px; border-radius:10px;
-      border:1px solid #cfcfcf; font-size:16px;
+    /* Form */
+    form{display:grid; gap:12px}
+    label{font-weight:600}
+    input, select, textarea{
+      width:100%; padding:13px; border-radius:10px;
+      border:1px solid #cfcfcf; font-size:16px; background:#fff;
     }
-    form button{
-      margin-top:14px; width:100%;
+    textarea{resize:vertical}
+    .row2{display:grid; gap:12px; grid-template-columns:1fr}
+    @media(min-width:720px){ .row2{grid-template-columns:1fr 1fr} }
+    .checkboxes{display:grid; gap:8px; grid-template-columns:1fr}
+    .checkboxes label{font-weight:400; display:flex; gap:10px; align-items:center}
+    .note{font-size:14px; color:#444}
+
+    button{
+      margin-top:6px; width:100%;
       background:var(--coral); color:#fff; border:none; border-radius:12px;
-      padding:14px 16px; font-size:17px; font-weight:600; cursor:pointer;
+      padding:14px 16px; font-size:17px; font-weight:700; cursor:pointer;
+      letter-spacing:.2px;
     }
-    .notice{margin-top:8px; font-size:14px; color:#444}
+    button:hover{filter:brightness(.96)}
     footer{background:#eee; margin-top:46px; padding:22px; font-size:14px; text-align:center}
+    .muted{color:#475569}
   </style>
 </head>
 <body>
@@ -79,68 +92,141 @@
   <main>
     <section class="section">
       <h2>What’s coming</h2>
-      <p>We’re exploring launching a hemp-derived CBD topical handmade in Nevada. This page is just to see who might be interested when we go live.</p>
+      <p>We’re exploring a hemp-derived CBD topical, handmade in Nevada. This page simply checks interest so we know what to make first.</p>
     </section>
 
     <section class="section">
       <h3>Why people might use it</h3>
       <div class="tiles">
-        <div class="tile"><h4>Rest easier</h4><p>Wind down without grogginess.</p></div>
-        <div class="tile"><h4>Less soreness</h4><p>Take the edge off daily pain.</p></div>
-        <div class="tile"><h4>Looser movement</h4><p>Stretch and work with more ease.</p></div>
-        <div class="tile"><h4>Calmer nerves</h4><p>Turn the volume down on stress.</p></div>
+        <div class="tile">
+          <!-- moon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <h4>Rest easier</h4>
+          <p class="muted">Wind down without grogginess.</p>
+        </div>
+        <div class="tile">
+          <!-- muscle line -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M4 12a4 4 0 0 1 4-4h3m5 4a4 4 0 0 1-4 4h-3"/></svg>
+          <h4>Less soreness</h4>
+          <p class="muted">Take the edge off daily pain.</p>
+        </div>
+        <div class="tile">
+          <!-- arrows for mobility -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v6m0 0l4 4m-4-4l-4 4M5 21h14"/></svg>
+          <h4>Looser movement</h4>
+          <p class="muted">Stretch and work with more ease.</p>
+        </div>
+        <div class="tile">
+          <!-- calm waves -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2M3 16c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2"/></svg>
+          <h4>Calmer nerves</h4>
+          <p class="muted">Turn the volume down on stress.</p>
+        </div>
       </div>
     </section>
 
     <section class="section card">
-      <h3>Reserve your jar</h3>
-      <p>Tell us what size or how many jars you’d want. This isn’t a purchase — just a way to save your spot for when we launch.</p>
-      <form id="reserveForm">
-        <label>Name</label>
-        <input id="rname" type="text" placeholder="Your name" required>
-        <label>Email</label>
-        <input id="remail" type="email" placeholder="you@example.com" required>
-        <label>Interest</label>
-        <select id="rinterest">
-          <option value="1 jar">1 jar</option>
-          <option value="2 jars">2 jars</option>
-          <option value="3+ jars">3+ jars</option>
-        </select>
-        <label>Notes (optional)</label>
-        <textarea id="rmsg" rows="3" placeholder="Tell us what you need…"></textarea>
+      <h3>Reserve your jar (no payment)</h3>
+      <p>Tell us what you’d want when we go live. This helps us size the first batch.</p>
+
+      <form id="reserveForm" novalidate>
+        <div class="row2">
+          <div>
+            <label for="rname">Name</label>
+            <input id="rname" type="text" placeholder="Your name" required>
+          </div>
+          <div>
+            <label for="remail">Email</label>
+            <input id="remail" type="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+
+        <div class="row2">
+          <div>
+            <label for="rsize">Preferred size</label>
+            <select id="rsize">
+              <option value="1 oz">1 oz</option>
+              <option value="2 oz" selected>2 oz</option>
+              <option value="4 oz">4 oz</option>
+            </select>
+          </div>
+          <div>
+            <label for="rqty">Quantity</label>
+            <select id="rqty">
+              <option>1 jar</option>
+              <option>2 jars</option>
+              <option>3 jars</option>
+              <option>4+ jars</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row2">
+          <div>
+            <label for="rprice">What would you expect to pay (2 oz)?</label>
+            <select id="rprice">
+              <option>$25</option>
+              <option>$35</option>
+              <option selected>$45</option>
+              <option>$55+</option>
+            </select>
+          </div>
+          <div>
+            <label for="rneed">Why would you use it?</label>
+            <select id="rneed">
+              <option>Sleep / rest</option>
+              <option>Soreness / pain</option>
+              <option>Mobility / stretching</option>
+              <option>Stress / calming</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label>Anything else?</label>
+          <textarea id="rmsg" rows="3" placeholder="Tell us what you need…"></textarea>
+        </div>
+
         <button type="submit">Reserve Interest</button>
-        <div class="notice">No payment now — we’ll reach out when ready.</div>
+        <p class="note">No payment now — we’ll reach out when ready. Name can change later; this is just a preview.</p>
       </form>
     </section>
 
     <section class="section card">
       <h3>About the maker</h3>
-      <p>This is being developed in small batches in Nevada, by people who care about taking care of others. We can evolve the brand name later — this is just a preview to show what it could look like.</p>
+      <p>This is being developed in small batches in Nevada by people who care about taking care of others. The brand name can evolve — this page is only to test interest and shape the first run.</p>
     </section>
   </main>
 
   <footer>
-    <p><strong>Disclaimer:</strong> This is not a medical product and not for sale yet. These statements have not been evaluated by the Food and Drug Administration.</p>
+    <p><strong>Disclaimer:</strong> This preview is not a medical product and not for sale yet. These statements have not been evaluated by the Food and Drug Administration.</p>
   </footer>
 
   <script>
-    // Reserve form – mailto draft
+    // mailto with all fields included
     document.getElementById('reserveForm').addEventListener('submit', function(e){
       e.preventDefault();
-      const name=document.getElementById('rname').value.trim();
-      const email=document.getElementById('remail').value.trim();
-      const interest=document.getElementById('rinterest').value;
-      const msg=document.getElementById('rmsg').value.trim();
-      if(!name||!email){alert('Please add your name and email.');return;}
+      const name = document.getElementById('rname').value.trim();
+      const email = document.getElementById('remail').value.trim();
+      const size = document.getElementById('rsize').value;
+      const qty = document.getElementById('rqty').value;
+      const price = document.getElementById('rprice').value;
+      const need = document.getElementById('rneed').value;
+      const msg = document.getElementById('rmsg').value.trim();
+      if(!name || !email){ alert('Please add your name and email.'); return; }
 
-      const subject="Preview Interest – Desert Relief Salve";
-      const body=`Name: ${name}
+      const subject = "Preview Interest — Desert Relief Salve";
+      const body = `Name: ${name}
 Email: ${email}
-Interest: ${interest}
+Preferred size: ${size}
+Quantity: ${qty}
+Expected price (2 oz): ${price}
+Primary reason: ${need}
 
-Message:
-${msg||"(none)"}`;
-      window.location.href=`mailto:info@gofercontent.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+Notes:
+${msg || "(none)"}`
+      window.location.href = `mailto:info@gofercontent.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     });
   </script>
 </body>
