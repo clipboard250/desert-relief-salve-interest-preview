@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Preview – Desert Relief Salve</title>
+  <meta name="description" content="Preview of Desert Relief Salve — hemp-derived CBD topical handmade in Nevada. Reserve your jar when we go live." />
+  <link rel="canonical" href="https://clipboard250.github.io/desert-relief-salve/preview.html"/>
+
+  <!-- Lexend font -->
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300..700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --blush:#F7E6E9;
+      --dune:#EAD9C5;
+      --sage:#CFE1D4;
+      --ink:#2A2A2A;
+      --coral:#FF6B6B;
+      --forest:#2F3E33;
+      --tile:#FFF7F8;
+      --card:#FFFFFF;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --radius:16px;
+      --base:18px; --lh:1.7;
+    }
+    body{
+      margin:0; font-family:"Lexend",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      font-size:var(--base); line-height:var(--lh); color:var(--ink);
+      background:linear-gradient(180deg,var(--blush),var(--dune) 45%,var(--sage));
+    }
+    h1,h2,h3,h4{margin:0 0 10px; font-weight:600}
+    p{margin:0 0 12px}
+    main{max-width:1000px; margin:auto; padding:28px 16px 60px}
+
+    header{
+      background:url('header_bg.jpg') center/cover no-repeat;
+      color:#fff; text-align:center; padding:80px 20px;
+      text-shadow:2px 2px 8px rgba(0,0,0,.55);
+    }
+    header h1{font-size:clamp(28px,6vw,48px)}
+    header p{font-size:clamp(16px,2.5vw,20px); opacity:.95}
+
+    .section{margin:32px 0}
+    .tiles{display:grid; gap:14px; grid-template-columns:repeat(2,1fr)}
+    @media(min-width:720px){.tiles{grid-template-columns:repeat(4,1fr)}}
+    .tile{
+      background:var(--tile); border:1px solid rgba(0,0,0,.06);
+      border-radius:12px; padding:14px; box-shadow:var(--shadow);
+      display:grid; gap:8px; align-content:start; min-height:120px;
+    }
+    .tile h4{margin:0; font-size:18px; font-weight:600}
+
+    .card{
+      background:var(--card); border:1px solid rgba(0,0,0,.06);
+      border-radius:var(--radius); padding:22px; box-shadow:var(--shadow);
+    }
+
+    form input, form select, form textarea{
+      width:100%; padding:13px; margin-top:10px; border-radius:10px;
+      border:1px solid #cfcfcf; font-size:16px;
+    }
+    form button{
+      margin-top:14px; width:100%;
+      background:var(--coral); color:#fff; border:none; border-radius:12px;
+      padding:14px 16px; font-size:17px; font-weight:600; cursor:pointer;
+    }
+    .notice{margin-top:8px; font-size:14px; color:#444}
+    footer{background:#eee; margin-top:46px; padding:22px; font-size:14px; text-align:center}
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Preview: Desert Relief Salve</h1>
+    <p>(Name can change — this is just to show what’s possible)</p>
+  </header>
+
+  <main>
+    <section class="section">
+      <h2>What’s coming</h2>
+      <p>We’re exploring launching a hemp-derived CBD topical handmade in Nevada. This page is just to see who might be interested when we go live.</p>
+    </section>
+
+    <section class="section">
+      <h3>Why people might use it</h3>
+      <div class="tiles">
+        <div class="tile"><h4>Rest easier</h4><p>Wind down without grogginess.</p></div>
+        <div class="tile"><h4>Less soreness</h4><p>Take the edge off daily pain.</p></div>
+        <div class="tile"><h4>Looser movement</h4><p>Stretch and work with more ease.</p></div>
+        <div class="tile"><h4>Calmer nerves</h4><p>Turn the volume down on stress.</p></div>
+      </div>
+    </section>
+
+    <section class="section card">
+      <h3>Reserve your jar</h3>
+      <p>Tell us what size or how many jars you’d want. This isn’t a purchase — just a way to save your spot for when we launch.</p>
+      <form id="reserveForm">
+        <label>Name</label>
+        <input id="rname" type="text" placeholder="Your name" required>
+        <label>Email</label>
+        <input id="remail" type="email" placeholder="you@example.com" required>
+        <label>Interest</label>
+        <select id="rinterest">
+          <option value="1 jar">1 jar</option>
+          <option value="2 jars">2 jars</option>
+          <option value="3+ jars">3+ jars</option>
+        </select>
+        <label>Notes (optional)</label>
+        <textarea id="rmsg" rows="3" placeholder="Tell us what you need…"></textarea>
+        <button type="submit">Reserve Interest</button>
+        <div class="notice">No payment now — we’ll reach out when ready.</div>
+      </form>
+    </section>
+
+    <section class="section card">
+      <h3>About the maker</h3>
+      <p>This is being developed in small batches in Nevada, by people who care about taking care of others. We can evolve the brand name later — this is just a preview to show what it could look like.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Disclaimer:</strong> This is not a medical product and not for sale yet. These statements have not been evaluated by the Food and Drug Administration.</p>
+  </footer>
+
+  <script>
+    // Reserve form – mailto draft
+    document.getElementById('reserveForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name=document.getElementById('rname').value.trim();
+      const email=document.getElementById('remail').value.trim();
+      const interest=document.getElementById('rinterest').value;
+      const msg=document.getElementById('rmsg').value.trim();
+      if(!name||!email){alert('Please add your name and email.');return;}
+
+      const subject="Preview Interest – Desert Relief Salve";
+      const body=`Name: ${name}
+Email: ${email}
+Interest: ${interest}
+
+Message:
+${msg||"(none)"}`;
+      window.location.href=`mailto:info@gofercontent.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  </script>
+</body>
+</html>
