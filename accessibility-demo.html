@@ -1,1 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accessibility Demo – Minimal, No Widget</title>
+  <style>
+    :root{ --bg:#ffffff; --fg:#111111; --link:#0a58ff; --muted:#f4f6f8; --focus:#005fcc }
+    [data-theme="hc"]{ --bg:#000000; --fg:#ffffff; --link:#00ffff; --muted:#111; }
+    html{ font-size:16px }
+    body{ margin:0; font-family:system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background:var(--bg); color:var(--fg); line-height:1.6 }
+    a{ color:var(--link); text-underline-offset: 2px; }
+    header, main, footer{ max-width:900px; margin:auto; padding:1rem }
+    header{ background:var(--muted) }
+    .skip-link{ position:absolute; left:-9999px; top:auto }
+    .skip-link:focus{ left:1rem; top:1rem; z-index:1000; background:#fff; color:#000; padding:.5rem 1rem; outline:3px solid var(--focus); border-radius:.25rem }
+    *:focus-visible{ outline:3px solid var(--focus); outline-offset:2px; border-radius:.15rem }
+    /* Control bar */
+    .controls{ position:sticky; top:0; background:var(--muted); border-bottom:1px solid #dfe3e6; padding:.5rem 1rem; display:flex; gap:.5rem; align-items:center; justify-content:flex-start }
+    .controls button{ padding:.4rem .6rem; font-size:1rem; background:#fff; color:#111; border:1px solid #c9ced3; border-radius:.5rem; cursor:pointer }
+    .controls button[aria-pressed="true"]{ background:#e7f1ff; border-color:#99befe }
+    .pill{ font-size:.85rem; padding:.2rem .5rem; background:#fff; border:1px solid #c9ced3; border-radius:999px }
+    .card{ background:var(--muted); padding:1rem; border-radius:.75rem }
+    .tag{ display:inline-block; font-size:.85rem; padding:.15rem .5rem; border:1px dashed #c9ced3; border-radius:.4rem }
+    @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header role="banner">
+    <h1>Accessibility Demo – No Widget, Just Code</h1>
+    <p class="pill" aria-label="demo description">Try the controls below. This is only a demo page; nothing here changes your website.</p>
+  </header>
 
+  <div class="controls" role="group" aria-label="Accessibility controls">
+    <button id="contrastBtn" aria-pressed="false" aria-label="Toggle high contrast">Contrast +</button>
+    <button id="bigger" aria-label="Increase text size">A+</button>
+    <button id="smaller" aria-label="Decrease text size">A-</button>
+    <button id="linksBtn" aria-pressed="false" aria-label="Highlight links">Highlight Links</button>
+    <span id="sizeReadout" aria-live="polite" class="pill">Text: 100%</span>
+  </div>
+
+  <main id="main" tabindex="-1">
+    <h2>What this page shows</h2>
+    <ul>
+      <li><span class="tag">Skip link</span> appears when you press <kbd>Tab</kbd> at the top.</li>
+      <li><span class="tag">Contrast toggle</span> flips to a high-contrast color scheme.</li>
+      <li><span class="tag">Text size</span> buttons bump font size up/down and announce the change.</li>
+      <li><span class="tag">Highlight links</span> outlines all links for low-vision users.</li>
+      <li><span class="tag">Visible focus</span> lets keyboard users see where they are.</li>
+    </ul>
+
+    <div class="card" aria-labelledby="demoLinks">
+      <h3 id="demoLinks">Sample content with links</h3>
+      <p>Here are some example links to demonstrate styling and focus order:
+        <a href="#">Read guide</a>,
+        <a href="#">Open resources</a>,
+        <a href="#">Contact us</a>.
+      </p>
+      <p>
+        Images should have helpful alt text when meaningful and empty alt when decorative:
+      </p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Walking_accessibility_symbol.svg" alt="International symbol of access" width="80" height="80">
+    </div>
+
+    <section aria-labelledby="forms">
+      <h3 id="forms">Form example (labels + error announce)</h3>
+      <form id="demoForm" novalidate>
+        <label for="email">Email</label><br>
+        <input id="email" name="email" type="email" aria-describedby="eHelp" required>
+        <div id="eHelp">We’ll only use this to reply.</div>
+        <p id="eError" class="error" role="alert" hidden>Email is required.</p>
+        <p><button>Submit</button></p>
+      </form>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>Demo page for illustrating accessibility controls without a paid overlay.</p>
+  </footer>
+
+  <script>
+    // Contrast toggle
+    const contrastBtn = document.getElementById('contrastBtn');
+    contrastBtn.addEventListener('click', () => {
+      const isOn = document.documentElement.getAttribute('data-theme') === 'hc';
+      document.documentElement.setAttribute('data-theme', isOn ? '' : 'hc');
+      contrastBtn.setAttribute('aria-pressed', String(!isOn));
+    });
+
+    // Font size controls
+    const sizeReadout = document.getElementById('sizeReadout');
+    let sizePct = 100; // percent of base
+    const applySize = () => { document.body.style.fontSize = (sizePct/100)+'em'; sizeReadout.textContent = 'Text: ' + sizePct + '%'; };
+    document.getElementById('bigger').addEventListener('click', () => { sizePct = Math.min(sizePct + 10, 170); applySize(); });
+    document.getElementById('smaller').addEventListener('click', () => { sizePct = Math.max(sizePct - 10, 70); applySize(); });
+    applySize();
+
+    // Highlight links
+    const linksBtn = document.getElementById('linksBtn');
+    linksBtn.addEventListener('click', () => {
+      const on = linksBtn.getAttribute('aria-pressed') === 'true';
+      document.querySelectorAll('a').forEach(a=>{
+        a.style.outline = on ? '' : '2px dashed currentColor';
+        a.style.outlineOffset = on ? '' : '2px';
+      });
+      linksBtn.setAttribute('aria-pressed', String(!on));
+    });
+
+    // Simple form error announce
+    document.getElementById('demoForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const email = document.getElementById('email');
+      const err = document.getElementById('eError');
+      const valid = email.value.trim().length > 0;
+      err.hidden = valid;
+      if(!valid){ email.focus(); }
+    });
+  </script>
+</body>
+</html>
